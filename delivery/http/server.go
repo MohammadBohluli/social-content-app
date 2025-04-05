@@ -19,7 +19,6 @@ type Server struct {
 	Logger     logger.Logger
 }
 
-// TODO: decouple Router from Server (use DI for send as agrument Router)
 func New(cfg config.Config, s pkgHttpServer.Server, l logger.Logger) *Server {
 	return &Server{
 		Cfg:        cfg,
