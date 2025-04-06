@@ -3,3 +3,13 @@ http_server:
   cors:
     allow_origins: "*"
   shutdown_ctx_timeout: 10
+
+psql:
+  driver: "postgres"
+  username: "social"
+  password: "password1234"
+  host: "db-service"
+  port: 5432
+  db_name: "social_db"
+  ssl_mode: "disable"
+  connection_timeout: 5
