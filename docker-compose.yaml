@@ -1,0 +1,51 @@
+services:
+
+  app-service:
+    build:
+      context: .
+      args:
+          GO_IMAGE_NAME: ${GO_IMAGE_NAME}
+          GO_IMAGE_VERSION: ${GO_IMAGE_VERSION}
+    container_name: app-service
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    # depends_on:
+    #   - db-service
+    #   - redis-service
+    entrypoint:
+      - air
+    env_file:
+      - .env
+    volumes:
+      - ./:/home/app
+
+
+  # db-service:
+  #   image: postgres:17.2-alpine3.21
+  #   container_name: db-service
+  #   environment:
+  #     POSTGRES_DB: social-db
+  #     POSTGRES_USER: user-db
+  #     POSTGRES_PASSWORD: password-db
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped
+
+
+  # redis-service:
+  #   image: redis:8.0-M03-alpine3.21
+  #   restart: unless-stopped
+  #   container_name: redis-service
+  #   ports:
+  #     - "6379:6379"
+  #   env_file:
+  #     - .env
+  #   command: redis-server --save 60 1 --loglevel warning
+
+
+# volumes:
+#   db-data:
