@@ -5,7 +5,7 @@ FROM ${GO_IMAGE_NAME}:${GO_IMAGE_VERSION}
 
 
 RUN apk add --no-cache curl \
-    && curl -L https://github.com/golang-migrate/migrate/releases/download/v4.16.2/migrate.linux-amd64.tar.gz | tar xvz -C /usr/local/bin \
+    && curl -L https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.tar.gz | tar xvz -C /usr/local/bin \
     && chmod +x /usr/local/bin/migrate \
     && apk add --no-cache make
 
