@@ -1,0 +1,12 @@
+CREATE EXTENSION IF NOT EXISTS citext;
+
+CREATE TABLE IF NOT EXISTS users(  
+    "id" SERIAL PRIMARY KEY,
+    "email" citext UNIQUE NOT NULL,
+    "username" VARCHAR(255) UNIQUE NOT NULL,
+    "password" BYTEA NOT NULL,
+    "is_active" BOOLEAN NOT NULL DEFAULT FALSE,
+    "role_id" INT REFERENCES roles(id) DEFAULT 1,
+    "created_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    "updated_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL DEFAULT NOW()
+);

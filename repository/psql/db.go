@@ -32,12 +32,13 @@ func (p *DB) Conn() *pgx.Conn {
 func New(config Config, logger l.Logger) *DB {
 
 	dsn := fmt.Sprintf(
-		"postgres://%s:%s@%s:%d/%s",
+		"postgres://%s:%s@%s:%d/%s?sslmode=%s",
 		config.Username,
 		config.Password,
 		config.Host,
 		config.Port,
 		config.DBName,
+		config.SSLMode,
 	)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
