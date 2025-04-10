@@ -1,4 +1,4 @@
-package post
+package postapp
 
 import "github.com/MohammadBohluli/social-content-app/types"
 

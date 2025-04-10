@@ -1,4 +1,4 @@
-package post
+package postapp
 
 type Validator struct{}
 

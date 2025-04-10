@@ -11,7 +11,7 @@ import (
 	"github.com/MohammadBohluli/social-content-app/adapter/logger"
 	"github.com/MohammadBohluli/social-content-app/config"
 	pkgHttpServer "github.com/MohammadBohluli/social-content-app/pkg/http_server"
-	"github.com/MohammadBohluli/social-content-app/post"
+	"github.com/MohammadBohluli/social-content-app/postapp"
 	"github.com/MohammadBohluli/social-content-app/repository/psql"
 )
 
@@ -19,11 +19,11 @@ type Server struct {
 	cfg        config.Config
 	httpServer pkgHttpServer.Server
 	logger     logger.Logger
-	post       post.App
+	post       postapp.App
 }
 
 func New(cfg config.Config, s pkgHttpServer.Server, l logger.Logger, conn *psql.DB) *Server {
-	postApp := post.New(conn)
+	postApp := postapp.New(conn)
 
 	return &Server{
 		cfg:        cfg,
