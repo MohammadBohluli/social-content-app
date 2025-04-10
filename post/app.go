@@ -11,10 +11,10 @@ type App struct {
 
 func New(conn *psql.DB) App {
 
-	handler := NewPostHandler()
-	repository := NewPostRepo(conn)
-	validator := NewPostValidator()
-	service := NewPostService(repository, validator)
+	handler := NewHandler()
+	repository := NewRepo(conn)
+	validator := NewValidator()
+	service := NewService(repository, validator)
 
 	return App{
 		Handler:    handler,

@@ -13,7 +13,7 @@ type Service struct {
 	validator Validator
 }
 
-func NewPostService(r Repository, v Validator) Service {
+func NewService(r Repository, v Validator) Service {
 	return Service{
 		repo:      r,
 		validator: v,

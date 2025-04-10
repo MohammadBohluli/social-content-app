@@ -2,6 +2,6 @@ package post
 
 type Validator struct{}
 
-func NewPostValidator() Validator {
+func NewValidator() Validator {
 	return Validator{}
 }

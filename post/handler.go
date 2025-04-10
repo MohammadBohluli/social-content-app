@@ -7,7 +7,7 @@ import (
 type Handler struct {
 }
 
-func NewPostHandler() Handler {
+func NewHandler() Handler {
 	return Handler{}
 }
 

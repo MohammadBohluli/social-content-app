@@ -6,7 +6,7 @@ type Repo struct {
 	conn *psql.DB
 }
 
-func NewPostRepo(conn *psql.DB) Repo {
+func NewRepo(conn *psql.DB) Repo {
 	return Repo{conn: conn}
 }
 
