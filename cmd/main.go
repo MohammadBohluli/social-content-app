@@ -25,7 +25,7 @@ func main() {
 	db.Conn()
 
 	// create server
-	server := http.New(cfg, httpserver.New(cfg.HTTPServer), logAdapter)
+	server := http.New(cfg, httpserver.New(cfg.HTTPServer), logAdapter, db)
 	server.Serve()
 
 }
