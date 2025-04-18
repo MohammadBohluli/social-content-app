@@ -9,6 +9,7 @@ import (
 	"github.com/MohammadBohluli/social-content-app/repository/psql"
 
 	httpserver "github.com/MohammadBohluli/social-content-app/pkg/http_server"
+	"github.com/MohammadBohluli/social-content-app/pkg/validator"
 )
 
 func main() {
@@ -20,12 +21,15 @@ func main() {
 		log.Fatalf("❌ failed to create logger: %v", err)
 	}
 
+	// create validator
+	validate := validator.New()
+
 	// connect to postgreSQL
 	db := psql.New(cfg.PSQL, logAdapter)
 	db.Conn()
 
 	// create server
-	server := http.New(cfg, httpserver.New(cfg.HTTPServer), logAdapter, db)
+	server := http.New(cfg, httpserver.New(cfg.HTTPServer), logAdapter, db, validate)
 	server.Serve()
 
 }

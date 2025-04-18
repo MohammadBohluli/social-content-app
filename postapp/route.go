@@ -11,7 +11,7 @@ func (h Handler) SetRoutes(s httpserver.Server) {
 
 	post.GET("", h.GetAllPost)
 	post.GET("/:id", h.GetPost)
-	post.POST("/:id", h.CreatePost)
+	post.POST("", h.CreatePost)
 	post.PATCH("/:id", h.UpdatePost)
 	post.DELETE("/:id", h.DeletePost)
 }

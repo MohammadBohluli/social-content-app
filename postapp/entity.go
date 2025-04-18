@@ -4,9 +4,9 @@ import "github.com/MohammadBohluli/social-content-app/types"
 
 type Post struct {
 	ID      types.ID `json:"id"`
-	Content string   `json:"content"`
 	Title   string   `json:"title"`
 	UserID  types.ID `json:"user_id"`
+	Content string   `json:"content"`
 	Tags    []string `json:"tags"`
 	// Comments  []Comment `json:"comments"`
 	// User      User      `json:"user"`

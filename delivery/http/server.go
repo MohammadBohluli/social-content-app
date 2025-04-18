@@ -13,23 +13,28 @@ import (
 	pkgHttpServer "github.com/MohammadBohluli/social-content-app/pkg/http_server"
 	"github.com/MohammadBohluli/social-content-app/postapp"
 	"github.com/MohammadBohluli/social-content-app/repository/psql"
+	"github.com/go-playground/validator/v10"
 )
 
 type Server struct {
 	cfg        config.Config
 	httpServer pkgHttpServer.Server
 	logger     logger.Logger
+	validator  *validator.Validate
 	post       postapp.App
+	db         *psql.DB
 }
 
-func New(cfg config.Config, s pkgHttpServer.Server, l logger.Logger, conn *psql.DB) *Server {
-	postApp := postapp.New(conn)
+func New(cfg config.Config, s pkgHttpServer.Server, l logger.Logger, conn *psql.DB, v *validator.Validate) *Server {
+	postApp := postapp.New(conn, v)
 
 	return &Server{
 		cfg:        cfg,
 		httpServer: s,
 		logger:     l,
+		validator:  v,
 		post:       postApp,
+		db:         conn,
 	}
 }
 
@@ -56,6 +61,10 @@ func (s Server) Serve() {
 
 	if err := s.httpServer.Stop(ctx); err != nil {
 		s.logger.Fatal("❌ server forced to shutdown:", "error", err)
+	}
+
+	if err := s.db.Close(); err != nil {
+		s.logger.Error("❌ failed to close database connection", "error", err)
 	}
 
 	s.logger.Info("👋 server exited properly")

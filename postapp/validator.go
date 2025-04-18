@@ -1,7 +1,11 @@
 package postapp
 
-type Validator struct{}
+// import "github.com/go-playground/validator/v10"
 
-func NewValidator() Validator {
-	return Validator{}
-}
+// type Validator struct {
+// 	validator *validator.Validate
+// }
+
+// func NewValidator(v *validator.Validate) Validator {
+// 	return Validator{validator: v}
+// }

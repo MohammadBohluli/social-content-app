@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS "posts"(
     "title" TEXT NOT NULL,
     "user_id" INT NOT NULL,
     "content" TEXT NOT NULL,
-    "tags" VARCHAR(100) [],
+    "tags" VARCHAR(100)[],
     "version" INT DEFAULT 0,
     "created_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMP(0) WITH TIME ZONE NOT NULL DEFAULT NOW(),
